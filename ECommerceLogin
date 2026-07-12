@@ -1,0 +1,24 @@
+public class ECommerceLogin {
+public static void main(String[] args) {
+	String com = "user123@gmail.com|User123";
+	String[] data = com.split("\\|");
+	String UserName = data[0];
+	String Password = data[1];
+	if(UserName.contains("@")) {
+		System.out.println("Valid UserName");
+	}
+	else {
+		System.out.println("Invalid UserName");
+	}
+	if (Password.length() >= 8){
+		System.out.println("Strong Password");
+	}
+	else {
+		System.out.println("Weak password");
+	}
+	char first = UserName.charAt(0);
+	char last = UserName.charAt(UserName.length()-1);
+	String maskedUserName = first + "*************" + last;
+	System.out.println("Masked UserName :" + maskedUserName);
+}
+}
