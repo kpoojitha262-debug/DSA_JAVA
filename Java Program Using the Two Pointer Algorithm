@@ -1,0 +1,24 @@
+public class Bank {
+public static void main(String[] args) {
+	int transactions[]= {1000,2000,3000,4000,5000,6000,7000,8000};
+	int targetAmount = 9000;
+	int left = 0;
+	int right = transactions.length-1;
+	while(left < right) {
+		int sum = transactions[left] + transactions[right];
+		if(sum == targetAmount) {
+			System.err.println("Fraud pair Found");
+			System.out.println("Transaction1 :" + transactions[left]);
+			System.out.println("Transaction2 :"+ transactions[right]);
+			System.out.println("Total Sum:"+sum);
+			break;
+		}
+		else if(sum < targetAmount) {
+			left++;
+		}
+		else {
+			right--;
+		}
+	}
+}
+}
