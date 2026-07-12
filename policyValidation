@@ -1,0 +1,31 @@
+public class policyValidation {
+public static void main(String[] args) {
+	String s2 = "POLI12345|Vehicle|Active";
+	String[] data2 = s2.split("\\|");
+	String policyId = data2[0];
+	String policyType2 = data2[1];
+	String status2 = data2[2];
+	if (policyId.startsWith("POL")&&policyId.length() == 9)
+	{
+		System.out.println("Valid claimID");
+	}
+		else {
+			System.out.println("Invalid ClaimId");
+		}
+		if (policyType2.equals("Vehicle")) {
+			System.out.println("Valid");
+		}
+			else {
+				System.out.println("Invalid policytype");
+			}
+			if(status2.equals("Active")) {
+				System.out.println("Approved");
+			}
+			else if (status2.equals("REJECTED")){
+				System.out.println("Rejected");
+			}
+			else {
+				System.out.println("Invalid Status");		
+			}
+}
+}
