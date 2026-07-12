@@ -1,0 +1,24 @@
+public class ECommerceOrder {
+public static void main(String[] args) {
+	String s3 = "ORD001|Laptop|55000|DELIVERED";
+	String[] data = s3.split("\\|");
+	String orderId = data[0];
+	String productName = data[1];
+	String price = data[2];
+	String deliveryStatus = data[3];
+	int price2 = Integer.parseInt(price);
+	if(deliveryStatus.equals("DELIVERED")) {
+		System.out.println("Delivered");
+	}
+	else {
+		System.out.println("PENDING");
+	}
+	if(price2 > 50000) {
+		System.out.println("High Value Order");
+	}
+	char first = productName.charAt(0);
+	char last = productName.charAt(productName.length()-1);
+	String maskedProductName = first + "****" + last;
+	System.out.println("Masked Product Name :" + maskedProductName);
+}
+}
