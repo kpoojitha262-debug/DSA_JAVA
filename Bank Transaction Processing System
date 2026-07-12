@@ -1,0 +1,38 @@
+package com.poojitha.day5.Assignment;
+
+public class day5 {
+public static void main(String[] args) {
+	String s1 = "TXN999|UPI|8000|SUCCESS";
+	String[] s2 = s1.split("\\|");
+	String transactionId = s2[0];
+	String Type = s2[1];
+	String amount = s2[2];
+	String status = s2[3];
+	int amountValue = Integer.parseInt(amount);
+	if(Type.equals("UPI")) {
+		System.out.println("UPI Transaction");
+	}
+	else if(Type.equals("ATM")){
+		System.out.println("ATM Transaction");
+	}
+	else if(Type.equals("NEFT")){
+		System.out.println("NEFT Transaction");
+	}
+	else {
+		System.out.println("Unknown Transaction");
+	}
+	if(amountValue > 5000) {
+		System.out.println("Medium value Transaction");
+	}
+	if(transactionId.startsWith("POL")){
+	    	System.out.println("ValidPolicyId");
+	 }
+    if(!status.equals("SUCCESS")){
+	  System.out.println("Transaction Failed");
+    }
+    else {
+	  System.out.println("Transaction Successful");
+    }
+   }
+  }
+
