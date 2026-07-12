@@ -1,0 +1,26 @@
+public class Sample {
+  public static void main(String[] args) {
+	String input = "CLM101|Madhu|Health|15000|APPROVED";
+	String[] data = input.split("\\|");
+	String claimId = data[0];
+	String customerName = data[1];
+	String policyType = data[2];
+	String amount = data[3];
+	String status = data[4];
+	int amountValue = Integer.parseInt(amount);
+	if(status.equals("APPROVED")) {
+		System.out.println("Approved");
+	}
+	else if (status.equals("REJECTED")){
+		System.out.println("Rejected");
+	}
+	else {
+		System.out.println("Invalid Status");
+		
+	}
+	if (amountValue>10000) {
+		System.out.println("High Claim Amount");
+	}
+  }
+}
+
