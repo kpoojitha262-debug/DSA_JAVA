@@ -1,0 +1,20 @@
+public class Bank {
+public static void main(String[] args) {
+	int deposit[] = {1000,2000,3000,4000,2000};
+	int k = 3;//window sum
+	int windowSum = 0;
+	for(int i = 0;i<k;i++) {//Calculate first window
+		windowSum = windowSum+deposit[i];
+	}
+	int maxSum = windowSum ;// slide the window
+	for(int i = k; i < deposit.length;i++) {
+		windowSum = windowSum - deposit[i-k];//Remove Left Element
+		windowSum = windowSum + deposit[i];//Add New Right Element
+		if (windowSum > maxSum) {//update maximum
+			maxSum = windowSum;
+		}
+	}
+	System.out.println("Maximum deposit in 3 continous days : " + maxSum );
+}
+
+}
