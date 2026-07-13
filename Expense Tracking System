@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+
+ class Finances {
+
+	int expenseId;
+	String category;
+	double amount;
+	int quantity;
+	public int id;
+	
+	Finances(int expenseId,String category,double amount,int quantity){
+		this.expenseId = expenseId;
+		this.category = category;
+		this.amount = amount;
+		this.quantity = quantity;	
+	}
+	void display() {
+		System.out.println("Expense Id : "+ expenseId);
+		System.out.println("Category :"+ category);
+		System.out.println("Amount :"+ amount);
+		System.out.println("Quantity: "+ quantity);
+	}
+}
+ 
+ class Shopping {
+	 ArrayList<Finances> t = new ArrayList<>();
+	 //Add the product
+	 
+ void addProduct(int expenseId,String category,double amount,int quantity) {
+	 Finances p = new Finances(expenseId, category,amount,quantity);
+      t.add(p);
+
+  System.out.println(category + " Added Successfully");
+	 }
+ 
+    void addProduct(int expenseId, String category,
+         double amount) {
+   Finances p = new Finances(expenseId, category, amount, 1);
+             t.add(p);            
+System.out.println(category + " Added with Default Quantity");
+}
+    
+    //Display the all products
+    void displayProducts() {
+
+        System.out.println("\n--- Products in Cart ---");
+
+        for (Finances p : t) {
+
+            p.display();
+        }
+    }
+    //Search product
+    void searchProduct(int searchId) {
+
+        boolean found = false;
+
+        for (Finances p : t) {
+
+            if (p.expenseId == searchId) {
+
+                System.out.println("\nProduct Found");
+                p.display();
+                found = true;
+            }
+        }
+
+        if (!found) {
+
+            System.out.println("Product Not Found");
+        }
+    }
+       // Update quantity
+     void updateQuantity(int id, int newQuantity) {
+
+        for (Finances p : t) {
+
+            if (p.expenseId == id) {
+
+                p.quantity = newQuantity;
+
+                System.out.println("Quantity Updated");
+            }
+        }
+    }
+     // Remove product
+     void removeProduct(int expenseId) {
+
+         for (int i = 0; i < t.size(); i++) {
+         if (t.get(i).expenseId == expenseId){
+
+                t.remove(i);
+
+                 System.out.println("Product Removed");
+             }
+         }
+         
+     }
+
+     // Calculate total bill
+     void totalBill() {
+
+         double total = 0;
+
+         for (Finances p : t) {
+
+             total += p.quantity * p.amount;
+         }
+
+         System.out.println("\nTotal Bill = " + total);
+     }
+ }
+
+public class Finance {
+	public static void main(String[] args) {
+		Shopping t = new Shopping();
+		t.addProduct(101,"LAPTOP",50000,1);
+		t.addProduct(102,"MOBILE",35000,1);
+		t.addProduct(103,"Earphones",500,2);
+		t.displayProducts();
+		
+	}
+}
