@@ -1,0 +1,184 @@
+	import java.util.ArrayList;
+	import java.util.Scanner;
+
+	class Product {
+
+	    int productId;
+	    String productName;
+	    int quantity;
+	    double price;
+
+	    // Constructor
+	    Product(int productId, String productName,
+	            int quantity, double price) {
+
+	        this.productId = productId;
+	        this.productName = productName;
+	        this.quantity = quantity;
+	        this.price = price;
+	    }
+
+	    // Display Method
+	    void display() {
+
+	        System.out.println("Product ID : " + productId);
+	        System.out.println("Product Name : " + productName);
+	        System.out.println("Quantity : " + quantity);
+	        System.out.println("Price : " + price);
+	        System.out.println("----------------------------");
+	    }
+	}
+
+	public class ECommerceSystem {
+
+	    public static void main(String[] args) {
+
+	        Scanner sc = new Scanner(System.in);
+
+	        ArrayList<Product> cart = new ArrayList<>();
+
+	        int choice;
+
+	        do {
+
+	            System.out.println("\n===== SHOPPING CART MENU =====");
+	            System.out.println("1. Add Product");
+	            System.out.println("2. Display Products");
+	            System.out.println("3. Search Product");
+	            System.out.println("4. Update Quantity");
+	            System.out.println("5. Remove Product");
+	            System.out.println("6. Calculate Total Bill");
+	            System.out.println("7. Exit");
+
+	            System.out.print("Enter Choice: ");
+	            choice = sc.nextInt();
+
+	            switch (choice) {
+
+	                // ADD PRODUCT
+	                case 1:
+
+	                    System.out.print("Enter Product ID: ");
+	                    int id = sc.nextInt();
+	                    sc.nextLine();
+
+	                    System.out.print("Enter Product Name: ");
+	                    String name = sc.nextLine();
+
+	                    System.out.print("Enter Quantity: ");
+	                    int quantity = sc.nextInt();
+
+	                    System.out.print("Enter Price: ");
+	                    double price = sc.nextDouble();
+
+	                    Product p = new Product(id, name, quantity, price);
+
+	                    cart.add(p);
+
+	                    System.out.println("Product Added Successfully");
+	                    break;
+
+	                // DISPLAY PRODUCTS
+	                case 2:
+
+	                    System.out.println("\n--- Products in Cart ---");
+
+	                    for (Product product : cart) {
+
+	                        product.display();
+	                    }
+
+	                    break;
+
+	                // SEARCH PRODUCT
+	                case 3:
+
+	                    System.out.print("Enter Product ID to Search: ");
+	                    int searchId = sc.nextInt();
+
+	                    boolean found = false;
+
+	                    for (Product product : cart) {
+
+	                        if (product.productId == searchId) {
+
+	                            System.out.println("Product Found");
+	                            product.display();
+	                            found = true;
+	                        }
+	                    }
+
+	                    if (!found) {
+
+	                        System.out.println("Product Not Found");
+	                    }
+
+	                    break;
+
+	                // UPDATE QUANTITY
+	                case 4:
+
+	                    System.out.print("Enter Product ID to Update: ");
+	                    int updateId = sc.nextInt();
+
+	                    for (Product product : cart) {
+
+	                        if (product.productId == updateId) {
+
+	                            System.out.print("Enter New Quantity: ");
+	                            product.quantity = sc.nextInt();
+
+	                            System.out.println("Quantity Updated");
+	                        }
+	                    }
+
+	                    break;
+
+	                // REMOVE PRODUCT
+	                case 5:
+
+	                    System.out.print("Enter Product ID to Remove: ");
+	                    int removeId = sc.nextInt();
+
+	                    for (int i = 0; i < cart.size(); i++) {
+
+	                        if (cart.get(i).productId == removeId) {
+
+	                            cart.remove(i);
+
+	                            System.out.println("Product Removed");
+	                        }
+	                    }
+
+	                    break;
+
+	                // TOTAL BILL
+	                case 6:
+
+	                    double total = 0;
+
+	                    for (Product product : cart) {
+
+	                        total += product.quantity * product.price;
+	                    }
+
+	                    System.out.println("Total Bill = " + total);
+
+	                    break;
+
+	                // EXIT
+	                case 7:
+
+	                    System.out.println("Thank You");
+	                    break;
+
+	                default:
+
+	                    System.out.println("Invalid Choice");
+	            }
+
+	        } while (choice != 7);
+
+	        sc.close();
+	    }
+	}
