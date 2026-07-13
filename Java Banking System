@@ -1,0 +1,117 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+ class BankingTransaction {
+	int id;
+	String accNo;
+	String type;
+	double amount;
+	
+BankingTransaction(int id, String accNo, String type, double amount)
+	{
+		this.id = id;
+		this.accNo = accNo;
+		this.type = type;
+		this.amount = amount;
+	}
+	}
+public class BankingSystem {
+	 
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	
+	ArrayList<BankingTransaction>  list = new ArrayList<>();
+	
+	while(true) {
+		System.out.println("-------------Transactions--------------");
+		System.out.println("1.Add Transaction");
+		System.out.println("2.Search Transactions");
+		System.out.println("3.Delete Transaction");
+		System.out.println("4.Exit");
+		
+		System.out.println("Enter a choice : ");
+		int choice = sc.nextInt();
+		
+		if(choice == 1) {
+			System.out.println("Enter Trasaction Id :");
+			int id = sc.nextInt();
+			
+			System.out.println("Enter Account Number: ");
+			String accNo = sc.next();
+			
+			 if (!(accNo.length() == 12 && (accNo.startsWith("SBI") || accNo.startsWith("IOB")))){
+
+                 System.out.println("Invalid Account Number");
+                 System.err.println("Must start with SBI or IOB and total 12 characters");
+                 continue;
+			 }
+			
+			System.out.println("Credit/Debit type : ");
+			String type = sc.next();
+			
+			 System.out.print("Enter Amount: ");
+             double amt = sc.nextDouble();
+             
+             list.add(new BankingTransaction(id, accNo, type, amt));
+             System.out.println("Transaction Added!");
+
+		}
+		
+		else if(choice == 2) {
+	          System.out.print("Enter Transaction ID to Search: ");
+	             int searchId = sc.nextInt();
+
+	              boolean found = false;
+
+	                for (BankingTransaction t : list) {
+
+	                 if (t.id == searchId) {
+
+	                     System.out.println("Transaction Found");
+	                     System.out.println("Account Number : " + t.accNo);
+	                     System.out.println("Type           : " + t.type);
+	                     System.out.println("Amount         : " + t.amount);
+	                        found = true;
+	                    }
+	                }
+
+	                if (!found) {
+	                    System.out.println("Transaction Not Found");
+	                }
+	            }
+		
+		 else if (choice == 3) {
+
+             System.out.print("Enter Transaction ID to Delete: ");
+             int deleteId = sc.nextInt();
+
+             boolean deleted = false;
+
+           for (int i = 0; i < list.size(); i++) {
+                 if (list.get(i).id == deleteId) {
+                     list.remove(i);
+
+                     System.out.println("Transaction Deleted");
+
+                     deleted = true;
+
+                     break;
+                 }
+             }
+
+             if (!deleted) {
+                 System.out.println("Transaction Not Found");
+             }
+         }
+		 else if (choice == 4) {
+
+             System.out.println("Program Closed");
+             break;
+			}
+		 else {
+			 System.out.println("Invalid Choice");
+		}
+	}
+	sc.close();
+}
+}
