@@ -1,0 +1,35 @@
+public class BinarySearchExample
+{
+public static void main(String[] args) {
+	int numbers[] = {10,20,30,40,50,60,70};
+	int searchValue = 40;
+	boolean found = false;
+	
+	int start = 0, end = numbers.length-1;
+	
+	while(start <= end)
+	{
+		int middle = (start + end) /2;
+		
+		if (numbers[middle] == searchValue)
+		{
+			System.out.println("Found at index :" + middle);
+			found = true;
+		    break;
+		}
+		
+		else if(searchValue < numbers[middle])
+			
+			end = middle-1 ;
+		
+		else
+			
+			start =  middle+1;
+	}
+	if(!found)
+	{
+		System.out.println("Element not found");
+	}
+  }
+}
+
