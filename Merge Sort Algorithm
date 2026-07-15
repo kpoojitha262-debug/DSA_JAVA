@@ -1,0 +1,44 @@
+public class MergeSort {
+	     
+  void mergeSort(int numbers[], int leftIndex, int rightIndex)
+  {
+     if(leftIndex < rightIndex) 
+     {
+    	 int middleIndex = (leftIndex + rightIndex) / 2;
+    	 mergeSort(numbers, leftIndex, middleIndex);
+    	 mergeSort(numbers, middleIndex+1, rightIndex);
+    	 
+    	 int tempArray[] = new int[rightIndex - leftIndex+1];
+    	 
+    	 int leftPointer = leftIndex;
+    	 int rightPointer = middleIndex+1;
+    	 int tempPointer = 0;
+
+		 while(leftPointer <= middleIndex && rightPointer <= rightIndex)
+    	 {
+    		 if(numbers[leftPointer] < numbers[rightPointer])
+    		 {
+    			 tempArray[tempPointer++] = numbers[leftPointer++];
+    		 }
+    		 else
+    		 {
+    		    tempArray[tempPointer++] = numbers[rightPointer++];	 
+    		 }
+    	 }
+    	 while(leftPointer <= middleIndex)
+    	 {
+    		 tempArray[tempPointer++] = numbers[leftPointer++];
+    	 }
+    	 while(rightPointer <= rightIndex)
+    	 {
+    		 tempArray[tempPointer++] = numbers[rightPointer++];
+    	 }
+    	 for(int index = leftIndex,tempIndex = 0; index <= rightIndex; index++, tempIndex++ )
+    	 {
+    		 numbers[index] = tempArray[tempIndex];
+    	 }
+     }
+  }
+}
+JAVA or dsa
+
