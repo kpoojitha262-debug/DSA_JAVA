@@ -1,0 +1,14 @@
+public class Test1 {
+
+	public static void main(String[] args) {
+		
+		int graph[][] = {
+				{0, 1, 1},
+				{1 , 0 , 1},
+				{1 , 1, 0}
+	};
+		System.out.println("Connection Between 0 and 1 : "+ graph[0][1]);
+		System.out.println("Connection Between 1 and 2 : " + graph[1][2]);
+}
+}
+
