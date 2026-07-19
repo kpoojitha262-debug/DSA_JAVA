@@ -1,0 +1,19 @@
+public class LCS {
+
+	public static void main(String[] args) {
+		
+		String s1 = "ABCDEF";
+		String s2 = "AEBDF";
+		
+		String result = "";
+		
+		for(char ch : s1.toCharArray())
+		{
+			if(s2.indexOf(ch) != -1)
+			{
+				result += ch;
+			}
+		}
+		System.out.println("LCS :" + result);
+	}
+}
