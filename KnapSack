@@ -1,0 +1,27 @@
+public class KnapSack {
+
+	public static void main(String[] args) {
+		
+		int profit[] = {10 , 15 , 40} ;
+		int weight[] = {1 , 2, 3};
+		
+		int capacity = 5;
+		int totalProfit = 0;
+		
+		for(int i = 0; i < weight.length; i++)
+		{
+			if(weight[i] <= capacity)
+			{
+				capacity -= weight[i];
+				totalProfit += profit[i];
+			}
+		}
+		System.out.println("Profit :" + totalProfit);
+	}
+}
+//Initial capacity of bag is 5 
+//First item weight is 1 and profit is 10 , so item is added
+//Remaining capacity becomes 4 and total profit becomes 10
+//Second item weight is 2 and profit is 15. so items is added
+//Remaining item weight is 3, but remaining capacity is only 2, so item is skipped
+// Final total profit is 25.
