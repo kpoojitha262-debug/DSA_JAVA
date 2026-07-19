@@ -1,0 +1,13 @@
+public class DFS {
+	
+     static void dfs(int n)
+     {
+    	 System.out.println(n + "");
+    	 if(n < 4)
+    		 dfs(n + 1);
+     }
+	
+	public static void main(String[] args) {
+		dfs(1);
+	}
+}
